@@ -1,6 +1,6 @@
 # SokoSCAD
 
-![presentation](Presentation.jpg)
+![presentation](Presentation.png)
 
 ---
 
