@@ -20,55 +20,12 @@ use<themes/simple/theWall.scad>
 actions=[];
 level=0;
 
-/* [Constants] */
-_="nothing";
-F="floor";
-W="wall";
-P="player";
-B="box";
-G="goal";
-O="player on goal";
-X="box on goal";
-U="up";
-D="down";
-L="left";
-R="right";
-// Levels are array with: name, map width, map height, matrix of items
-simplest=["#0 Simplest",9,5,[
-[W,W,W,W,W,W,W,W,W],
-[W,F,F,F,F,F,F,F,W],
-[W,F,P,F,B,F,G,F,W],
-[W,F,F,F,F,F,F,F,W],
-[W,W,W,W,W,W,W,W,W]]
-];
-// Levels from https://sokoban.info/?1_1
-level_1=["#1 Original © Thinking Rabbit",19,11,[
-[_,_,_,_,W,W,W,W,W,_,_,_,_,_,_,_,_,_,_],
-[_,_,_,_,W,F,F,F,W,_,_,_,_,_,_,_,_,_,_],
-[_,_,_,_,W,B,F,F,W,_,_,_,_,_,_,_,_,_,_],
-[_,_,W,W,W,F,F,B,W,W,_,_,_,_,_,_,_,_,_],
-[_,_,W,F,F,B,F,B,F,W,_,_,_,_,_,_,_,_,_],
-[W,W,W,F,W,F,W,W,F,W,_,_,_,W,W,W,W,W,W],
-[W,F,F,F,W,F,W,W,F,W,W,W,W,W,F,F,G,G,W],
-[W,F,B,F,F,B,F,F,F,F,F,F,F,F,F,F,G,G,W],
-[W,W,W,W,W,F,W,W,W,F,W,P,W,W,F,F,G,G,W],
-[_,_,_,_,W,F,F,F,F,F,W,W,W,W,W,W,W,W,W],
-[_,_,_,_,W,W,W,W,W,W,W,_,_,_,_,_,_,_,_]]
-];
-level_2=["#2 Original © Thinking Rabbit",14,10,[
-[W,W,W,W,W,W,W,W,W,W,W,W,_,_,],
-[W,G,G,F,F,W,F,F,F,F,F,W,W,W,],
-[W,G,G,F,F,W,F,B,F,F,B,F,F,W,],
-[W,G,G,F,F,W,B,W,W,W,W,F,F,W,],
-[W,G,G,F,F,F,F,P,F,W,W,F,F,W,],
-[W,G,G,F,F,W,F,W,F,F,B,F,W,W,],
-[W,W,W,W,W,W,F,W,W,B,F,B,F,W,],
-[_,_,W,F,B,F,F,B,F,B,F,B,F,W,],
-[_,_,W,F,F,F,F,W,F,F,F,F,F,W,],
-[_,_,W,W,W,W,W,W,W,W,W,W,W,W,]]
-];
 // Level list
-levels=[simplest,level_1,level_2];
+// Levels from https://sokoban.info/?1_1
+include <levels/0.scad>
+include <levels/1.scad>
+include <levels/2.scad>
+levels=[L0,L1,L2];
 
 ///////////////////////////////////////////////////////
 // ! // Variables are processed only in compile-time //
