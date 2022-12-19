@@ -14,18 +14,12 @@ use<themes/simple/theFloor.scad>
 use<themes/simple/theGoal.scad>
 use<themes/simple/thePlayer.scad>
 use<themes/simple/theWall.scad>
+include <levels/levels.scad>
 
 /* [Player] */
 // Array of commands: up, down, left, right.
 actions=[];
 level=0;
-
-// Level list
-// Levels from https://sokoban.info/?1_1
-include <levels/0.scad>
-include <levels/1.scad>
-include <levels/2.scad>
-levels=[L0,L1,L2];
 
 ///////////////////////////////////////////////////////
 // ! // Variables are processed only in compile-time //
