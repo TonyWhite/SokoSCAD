@@ -8,4 +8,5 @@ include <4.scad>
 include <5.scad>
 include <6.scad>
 include <7.scad>
-levels=[L0,L1,L2,L3,L4,L5,L6,L7];
+include <8.scad>
+levels=[L0,L1,L2,L3,L4,L5,L6,L7,L8];
