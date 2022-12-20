@@ -176,9 +176,6 @@ map_height=levels[level][2];
 
 // Run application
 module run(){
-  
-    
-  
   if(level<len(levels)){
     // Center everything at the origin of the axes
     translate([-map_width/2,map_height/2,0]){
