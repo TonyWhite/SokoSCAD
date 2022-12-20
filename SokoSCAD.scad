@@ -176,48 +176,61 @@ map_height=levels[level][2];
 
 // Run application
 module run(){
-  // Do actions and update the map
-  map=do_action(i=0,map=levels[level][3])[0];
   
-  // Draw the game title
-  translate([map_width/2,3.5,0]) color("black") text("SokoSCAD",size=1,halign="center",$fn=50);
-  // Draw the separator
-  translate([map_width*0.1,3,0]) color("green") cube([map_width*0.8,0.1,0.5]);
-  // Draw the level title
-  translate([map_width/2,2,0]) color("black") text(map_title,size=0.5,halign="center",$fn=50);
+    
   
-  // Draw the map
-  for(y=[0:map_height-1]){
-    for(x=[0:map_width-1]){
-      item=map[y][x];
-      translate([x,-y,0]){
-        if (item==F || item==W || item==P || item==B || item==G || item==O || item==X) theFloor();
-        if (item==W) theWall();
-        if (item==P || item==O) thePlayer();
-        if (item==B || item==X) theBox();
-        if (item==G || item==O || item==X) theGoal();
+  if(level<len(levels)){
+    // Draw the game title
+    translate([map_width/2,3.5,0]) color("black") text("SokoSCAD",size=1,halign="center",$fn=50);
+    // Draw the separator
+    translate([map_width*0.1,3,0]) color("green") cube([map_width*0.8,0.1,0.5]);
+    // Draw the level title
+    translate([map_width/2,2,0]) color("black") text(map_title,size=0.5,halign="center",$fn=50);
+    
+    // Do actions and update the map
+    map=do_action(i=0,map=levels[level][3])[0];
+    
+    // Draw the map
+    for(y=[0:map_height-1]){
+      for(x=[0:map_width-1]){
+        item=map[y][x];
+        translate([x,-y,0]){
+          if (item==F || item==W || item==P || item==B || item==G || item==O || item==X) theFloor();
+          if (item==W) theWall();
+          if (item==P || item==O) thePlayer();
+          if (item==B || item==X) theBox();
+          if (item==G || item==O || item==X) theGoal();
+        }
       }
     }
+    
+    // Draw moves
+    translate([map_width/2,-map_height-0.5]) color("black") text(str("Moves: ",len(actions)),size=0.7,halign="center",$fn=50);
+    
+    // YOU WIN
+    goal_ok=[
+      for(y=[0:map_height-1])
+        for(x=[0:map_width-1])
+        if (map[y][x]==X) 1
+    ];
+    goal_no=[
+      for(y=[0:map_height-1])
+        for(x=[0:map_width-1])
+        if (map[y][x]==G || map[y][x]==O) 1
+    ];
+    if (len(goal_ok)>0 && len(goal_no)==0)
+      translate([map_width/2,-map_height-2,0]) color("red") text("YOU WIN",size=1,halign="center",$fn=50);
+    else
+      translate([map_width/2,-map_height-2,0]) color([0,0,0,0]) text("RESERVE SPACE",size=1,halign="center",$fn=50);
   }
-  
-  // Draw moves
-  translate([map_width/2,-map_height-0.5]) color("black") text(str("Moves: ",len(actions)),size=0.7,halign="center",$fn=50);
-  
-  // YOU WIN
-  goal_ok=[
-    for(y=[0:map_height-1])
-      for(x=[0:map_width-1])
-      if (map[y][x]==X) 1
-  ];
-  goal_no=[
-    for(y=[0:map_height-1])
-      for(x=[0:map_width-1])
-      if (map[y][x]==G || map[y][x]==O) 1
-  ];
-  if (len(goal_ok)>0 && len(goal_no)==0)
-    translate([map_width/2,-map_height-2,0]) color("red") text("YOU WIN",size=1,halign="center",$fn=50);
-  else
-    translate([map_width/2,-map_height-2,0]) color([0,0,0,0]) text("RESERVE SPACE",size=1,halign="center",$fn=50);
+  else{
+    // Draw the game title
+    translate([0,2,0]) color("black") text("SokoSCAD",size=1,halign="center",$fn=50);
+    // Draw the separator
+    translate([-5,1.5,0]) color("green") cube([10,0.1,0.5]);
+    //translate([0,0])
+    color("red") text(str("The level ", level, " does not exists (yet)"),size=1,halign="center",$fn=50);
+  }
 }
 
 run();
