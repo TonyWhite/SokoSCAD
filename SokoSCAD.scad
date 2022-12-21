@@ -9,12 +9,8 @@ Open "Player" section
 Edit "actions" array.
 */
 
-use<themes/simple/theBox.scad>
-use<themes/simple/theFloor.scad>
-use<themes/simple/theGoal.scad>
-use<themes/simple/thePlayer.scad>
-use<themes/simple/theWall.scad>
-include <levels/levels.scad>
+include<themes/simple.scad>
+include<levels/levels.scad>
 
 /* [Player] */
 // Array of commands: up, down, left, right.
