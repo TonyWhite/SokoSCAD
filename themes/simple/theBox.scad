@@ -42,7 +42,8 @@ module theBox(){
   }
   
   color(box_color)
-  render(convexity=10){
+  render(convexity=10)
+  translate([0.5,0.5,0.5]){
     // Faces
     face();
     rotate([180,0,0]) face();
