@@ -1,77 +1,63 @@
 module theBox(){
   box_color=[0.6,0.2,0];
+  plank_width=1/6;
+  plank_height=0.05;
+  plank_cut=0.02;
   
   module plank(length){
     linear_extrude(length,center=true)
-    polygon([[-0.05,0],[0.05,0],[0.05,0.03],[0.03,0.05],[-0.03,0.05],[-0.05,0.03]]);
-  }
-  
-  module border(){
-    translate([-0.45,-0.45,0])
-    translate([-0.05,-0.05,-0.5])
-    difference(){
-      union(){
-        translate([0.05,0.05,0])
-        rotate([0,0,180])
-        translate([0,0,0.5])
-        plank(1);
-        translate([0,0.05,0])
-        cube([0.1,0.05,1]);
-      }
-      
-      rotate([0,-45,0])
-      translate([0,0,-0.1])
-      cube([1,0.1,0.1],center=false);
-      
-      translate([0,0,1])
-      rotate([0,45,0])
-      cube([1,0.1,0.1],center=false);
-      
-      rotate([0,0,45])
-      cube([1,0.1,1],center=false);
-    }
-  }
-  
-  module diagonal(){
-    difference(){
-      rotate([90,0,45])
-      plank(sqrt((0.85^2)+(0.85^2)));
-      
-      // Cut the tips
-      translate([-0.45,0,0]) rotate([90,0,0]) plank(2);
-      translate([0,0.45,0]) rotate([90,0,90]) plank(2);
-      translate([0.45,0,0]) rotate([90,0,0]) plank(2);
-      translate([0,-0.45,0]) rotate([90,0,90]) plank(2);
-    }
+    polygon([[-plank_width/2,0],
+             [plank_width/2,0],
+             [plank_width/2,plank_height-plank_cut],
+             [plank_width/2-plank_cut,plank_height],
+             [-(plank_width/2-plank_cut),plank_height],
+             [-plank_width/2,plank_height-plank_cut]]
+    );
   }
   
   module face(){
-    // Parallel planks
-    for(i=[0:0.1:0.7]){
-      rotate([180,0,0])       // Rotate on front face
-      translate([i,0,0])      // Slide on face
-      translate([-0.4,0.4,0]) // Put on face
-      translate([0.05,0,0])   // Align vertex
-      plank(0.8);
+    difference(){
+      union(){
+        // Parallel planks
+        for(i=[0:(1/plank_width)-plank_width]){
+          translate([plank_width*i,0,0]) // Slide on face
+          translate([plank_width/2-0.5,0.5-(plank_height*2),0]) // Put plank on face
+          plank(1);
+        }
+        
+        // Borders
+        for(i=[0:90:270]){
+          rotate([0,i,0])
+          intersection(){
+            translate([0.5-plank_width/2,0.5-plank_height,0]) plank(1);
+            rotate([90,45,0]) linear_extrude(2,center=true) polygon([[0,0],[0,1.5],[1.5,0]]);
+          }
+        }
+      }
+      linear_extrude(2,center=true) polygon([[-2,2],[-2,0],[0,0]]);
+      rotate([0,90,0]) linear_extrude(2,center=true) polygon([[-1.5,1.5],[-1.5,0],[0,0]]);
+      rotate([0,180,0]) linear_extrude(2,center=true) polygon([[-1.5,1.5],[-1.5,0],[0,0]]);
+      rotate([0,270,0]) linear_extrude(2,center=true) polygon([[-1.5,1.5],[-1.5,0],[0,0]]);
     }
-    // Borders
-    border();
-    rotate([0,90,0]) border();
-    rotate([0,180,0]) border();
-    rotate([0,270,0]) border();
-    // Diagonal plank
-    translate([0,-0.45,0]) rotate([90,0,0]) diagonal();
   }
   
   color(box_color)
-  render(convexity=10)
-  translate([0.5,0.5,0.5]){
+  render(convexity=10){
+    // Faces
     face();
-    rotate([90,0,-90]) face();
     rotate([180,0,0]) face();
-    rotate([270,0,-90]) face();
-    rotate([0,-90,90]) face();
-    rotate([0,90,-90]) face();
+    rotate([0,90,90]) face();
+    rotate([0,0,-90]) face();
+    rotate([90,0,0]) face();
+    rotate([270,0,90]) face();
+    
+    // Diagonal planks
+    rotate([0,0,0]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
+    rotate([90,0,90]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
+    rotate([180,0,0]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
+    rotate([0,90,90]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
+    rotate([180,90,90]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
+    rotate([270,0,90]) rotate([0,45,0]) translate([0,0.5-plank_height,0]) plank(1);
   }
 }
 
