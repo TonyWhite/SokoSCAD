@@ -9,7 +9,7 @@ Open "Player" section
 Edit "actions" array.
 */
 
-include<themes/simple.scad>
+include<themes/lightweight.scad>
 include<levels/levels.scad>
 
 /* [Player] */
