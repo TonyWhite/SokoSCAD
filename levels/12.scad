@@ -14,6 +14,6 @@ L12=["#12 Original © Thinking Rabbit",17,13,
     [W,W,W,W,W,F,F,F,W,W,F,W,W,G,G,G,W],
     [_,_,_,_,W,W,W,W,W,F,F,F,F,F,W,W,W],
     [_,_,_,_,_,_,_,_,W,F,F,F,F,F,W,_,_],
-    [_,_,_,_,_,_,_,_,W,W,W,W,W,W,W,_,_],
+    [_,_,_,_,_,_,_,_,W,W,W,W,W,W,W,_,_]
   ]
 ];
