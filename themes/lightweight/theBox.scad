@@ -39,7 +39,7 @@ module theBox(){
   
   color(box_color)
   render(convexity=10)
-  translate([0.5,0.5,0]){
+  translate([0.5,0.5,0.03]){
     face();
   }
 }
