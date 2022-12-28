@@ -1,6 +1,6 @@
 module thePlayer(){
   face_color=[1,1,0];
-  face_segments=8;
+  face_segments=16;
   eyes_color=[0,0,0];
   
   // Give the coordinates of a regular polygon
