@@ -1,5 +1,6 @@
 module thePlayer(){
   face_color=[1,1,0];
+  face_segments=8;
   eyes_color=[0,0,0];
   
   // Give the coordinates of a regular polygon
@@ -18,7 +19,9 @@ module thePlayer(){
   color(face_color)
   render(convexity=5)
   translate([0.5,0.5,0.01])
-  polyhedron(regular_polygon_coords(8,0.5),[[0,1,2,3,4,5,6,7]],convexity=1);
+  polyhedron(regular_polygon_coords(face_segments,0.5),[
+    [for(i=[0:1:face_segments-1]) i]
+  ],convexity=1);
   
   // Eyes
   color(eyes_color)
