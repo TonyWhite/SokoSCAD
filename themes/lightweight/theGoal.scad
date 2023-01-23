@@ -1,5 +1,5 @@
 module theGoal(){
-  detail=8;
+  detail=16;
   
   // Give the coordinates of a regular polygon
   function regular_polygon_coords(order=4, r=1) =
