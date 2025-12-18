@@ -1,3 +1,9 @@
+/*
+Author: Antonio Bianco
+GitHub: TonyWhite
+License: GPL3
+*/
+
 module printChar(char="?"){
   translate([0.5,0.5,0.005])
   linear_extrude(0.1)

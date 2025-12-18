@@ -1,3 +1,9 @@
+/*
+Author: Antonio Bianco
+GitHub: TonyWhite
+License: GPL3
+*/
+
 use<simple/theBox.scad>
 use<simple/theFloor.scad>
 use<simple/theGoal.scad>
