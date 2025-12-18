@@ -39,7 +39,6 @@ Or, if you simply want to donate something, you can do so anyway.
 
 <div style="display:flex">
   <div style="height:30px">
-    <script src="https://liberapay.com/Antonio_Bianco/widgets/button.js"></script>
     <noscript><a href="https://liberapay.com/Antonio_Bianco/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
   </div>
   <div style="width:5px"></div>
