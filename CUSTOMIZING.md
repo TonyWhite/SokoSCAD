@@ -101,4 +101,4 @@ If you want to share your theme, you can:
 * Make a [pull](https://github.com/TonyWhite/SokoSCAD/pulls) request
 * Open an [issue](https://github.com/TonyWhite/SokoSCAD/issues) to request an enhancement.
 
-Remember to write
+Remember to include author, license and description in the theme file!
