@@ -2,6 +2,7 @@
 Author: Antonio Bianco
 GitHub: TonyWhite
 License: GPL3
+Description: Semi-flat, The modified version of "simple" to reduce the workload during preview.
 */
 
 use<lightweight/theBox.scad>

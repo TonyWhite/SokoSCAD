@@ -2,6 +2,7 @@
 Author: Antonio Bianco
 GitHub: TonyWhite
 License: GPL3
+Description: Semi-flat, high contrast, symbolic. Just minimal in appearance, structure and workload.
 */
 
 module printChar(char="?"){
