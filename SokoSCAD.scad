@@ -113,7 +113,7 @@ function move_box(i,map,player_position,next_step,b_next_step) =
 ;
 
 // Do action and update map (recursive)
-// Returns the updated map. Warning! The map is nested at index=0
+// Returns the updated map. Important! The map is nested at index=0
 function do_action(i,map) = [
   if (i<len(actions)) // Calculate an action
     let(action=actions[i])
