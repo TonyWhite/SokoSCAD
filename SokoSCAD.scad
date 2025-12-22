@@ -11,7 +11,7 @@ Edit "actions" array.
 
 include<themes/lightweight.scad>
 include<levels/levels.scad>
-include<commands.scad>
+include<actions.scad>
 
 /* [Player] */
 // Array of commands: up, down, left, right.

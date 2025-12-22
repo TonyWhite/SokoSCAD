@@ -1,4 +1,4 @@
-/* [Item list] */
+/* [Actions] */
 U="up";
 D="down";
 L="left";
